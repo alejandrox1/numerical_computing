@@ -1,0 +1,116 @@
+\documentclass[10pt,a4paper,draft]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+
+\begin{document}
+
+\title{Navier-Stokes Equations} 
+\author{\texttt{@X1alejandrox3}} 
+\date{\today}  
+\maketitle
+
+
+\section{Differential Form}
+
+\subsection{Reynolds Transport Theorem}
+Consider an integration of $\mathbf{f} = \mathbf{f}(\mathbf{x},t)$ over the time-dependent region $\Omega (t)$ with boundary $\partial \Omega(t)$.
+Taking a derivative with respect to time,
+$$
+\frac{d}{dt} \int_{\Omega (t)} d\mathbf{V} \, \mathbf{f}
+$$
+
+To move the integral inside the integration, we need to account for the time dependence of $\mathbf{f}$ along with the introduction and removal of space from $\Omega$ due to its dynamic boundary.
+
+
+Reynold's transport theorem allows us to do so!
+$$
+\frac{d}{d t} \int_{\Omega (t)} d\mathbf{V} \, \mathbf{f} 
+= \int_{\Omega (t)} d\mathbf{V} \, \frac{\partial \mathbf{f}}{\partial t}
++ \int_{\partial \Omega (t)} d\mathbf{A} \, \left(\mathbf{v}^b \cdot \mathbf{n}\right) \mathbf{f}
+$$
+
+Here, $\mathbf{n}(\mathbf{x},t)$ is the outward-pointing unit normal vector and $\mathbf{v}^b(\mathbf{x},t)$ is the velocity of the area element.
+
+
+\subsection{Conservation of Mass}
+$$
+\frac{D M_{sys}}{D t} = 0
+$$
+
+Using Reynold's theorem we can then write a system of equations for a control volume (cv).
+We will have a couple terms: 
+\begin{enumerate}
+\item Rate at which mass in the control volume changes.
+\item Flux accross control surface (net rate at which mass is flowing).
+\end{enumerate}
+both of this terms have to negate each other in order for mass to be conserved:
+
+$$
+\frac{DM}{Dt} = 
+\frac{\partial}{\partial} \int_{cv} dV \, \rho 
++ \int_{cs} dA \, \rho \mathbf{V} \cdot \mathbf{\hat{n}}
+= 0
+$$
+Where $\mathbf{v}$ is the velocity of the fluid. \\~\\
+
+\textbf{Differential Form:}
+
+Consider a small fluid element of size $\delta x \delta y \delta z$.
+
+Assuming that the density is uniform accross the differential of volume (very small volume), we can see that the rate at which the mass inside the control volume changes is given by,
+$$
+\frac{\partial \rho}{\partial t} \delta x \delta y \delta z
+$$
+
+The $x$ componenet of the mass flow rate, accross a face of an infinitesimal cube:
+$$
+\left[ 
+\rho u 
++ \frac{\partial}{\partial x} \left(\rho u\right) \frac{\delta x}{2}
+\right] \delta y \delta z
+$$
+
+the flux of mass accross the opposite face:
+$$
+\left[
+\rho u
+- \frac{\partial}{\partial x}\left(\rho u\right) \frac{\delta x}{2}
+\right] \delta y \delta z
+$$
+
+So the net rate of mass outflow in the $x$ direction:
+$$
+\frac{\partial}{\partial x}\left(\rho u\right) \delta x \delta y \delta z
+$$
+
+Nothing speacial about the $x$ direction, hence one can see the net rate of mass outflow can be expressed as,
+$$
+\left[ 
+\frac{\partial}{\partial x}\left(\rho u\right) + \frac{\partial}{\partial y}\left(\rho v\right) + \frac{\partial}{\partial z}\left(\rho w\right)
+\right]
+\delta x \delta y \delta z
+$$
+
+From which we finally get the differential form:
+$$
+\frac{\partial \rho}{\partial t} 
++ \frac{\partial}{\partial x}\left(\rho u\right) + \frac{\partial}{\partial y}\left(\rho v\right) + \frac{\partial}{\partial z}\left(\rho w\right)
+= 0
+$$
+In a nicer form,
+$$
+\frac{\partial \rho}{\partial t} + \nabla \cdot \rho\mathbf{v} = 0
+$$
+
+Notice that for a steady flow (constant fluid velocity) the first term will be zero.
+
+
+
+
+\subsection{Conservation of Momentum}
+
+
+\end{document}
