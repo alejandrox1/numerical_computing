@@ -50,8 +50,8 @@ both of this terms have to negate each other in order for mass to be conserved:
 
 $$
 \frac{DM}{Dt} = 
-\frac{\partial}{\partial} \int_{cv} dV \, \rho 
-+ \int_{cs} dA \, \rho \mathbf{V} \cdot \mathbf{\hat{n}}
+\frac{\partial}{\partial} \int_{cv} \rho \, dV 
++ \int_{cs}  \rho \mathbf{V} \cdot \mathbf{\hat{n}} \, dA
 = 0
 $$
 Where $\mathbf{v}$ is the velocity of the fluid. \\~\\
@@ -111,6 +111,143 @@ Notice that for a steady flow (constant fluid velocity) the first term will be z
 
 
 \subsection{Conservation of Momentum}
+$$
+\mathbf{F} 
+= \frac{D}{D t} \int \mathbf{V} dm 
+$$
+
+Following the same aproach as before can obtain the differential form, which has an unsteady and a flux term, 
+$$
+\Sigma f
+= \frac{\partial}{\partial t} \int_{cv} \mathbf{v} \rho \, dV
++ \int_{cs} \mathbf{v} \rho \mathbf{v}\cdot\mathbf{\hat{n}} \, dA
+$$
+
+Here again, we need to step back, look at our control volume and gather some inpiration so see what terms we need to take into account.
+
+For an infitesimal volume of fluid, we will have,
+$$
+\delta \mathbf{f} = \frac{D}{D t}\left(\mathbf{v} \delta m\right)
+= \delta m \cdot \mathbf{a}
+$$
+
+The system will experience two types of forces, body and surface forces.
+For our case, the only body force we may take into consideration may be that of gravity, in which case $\delta f_b = \delta m \cdot \mathbf{g}$.
+
+Surface forces will consist of, think if a cube, one normal to the surface, and two tangential perpendicular to the normal force and to each other.
+From thsi point of view we will go on and define stresses:
+
+\begin{itemize}
+\item Normal stress: 
+$$\sigma_n = \lim_{\delta A \to 0} \frac{\delta f_b}{\delta A}$$
+
+\item Shearing stress:
+$$
+\tau_i = \lim_{\delta A \to 0} \frac{\delta f_i}{\delta A}
+$$
+\end{itemize}
+
+Now, stresses make sense when you taken into account with respect to a coordinate system.
+Using plain and simple cartetian we will define the following notation:
+For the stresses on a plane in direction of coordinate $i$ and parallel to the other two, we will talk about the normal stress $\sigma_{ii}$ and $\tau_{ij}$ and $\tau_{ik}$ (assuming that the directions $j$ and $k$ are orthogonal to direction of the normal vector, $i$, for that plane).
+So first subscript is the direction of the normal vector, second subscript is the direction of the stress vector.
+
+Sign convention? The positive direction for the stress is the positive coordinate direction on the surface for which the outward normal is in the positive coordinate direction.
+
+
+Looking at the surface forces in terms of stresses, starting with planes orthogonal to the $y-z$ directions, we then have, for the net normal stress,
+$$
+\left[
+	\left( 
+	\sigma_{xx} 
+	+ \frac{\partial \sigma_{xx}}{\partial x} \frac{\delta x}{2}
+	\right)
+	-
+	\left( 
+	\sigma_{xx} 
+	- \frac{\partial \sigma_{xx}}{\partial x} \frac{\delta x}{2}
+	\right)
+\right] \delta y \delta z 
+= \frac{\partial \sigma_{xx}}{\partial x} \delta x \delta y \delta z
+$$
+
+The net shear stresses, same configuration,
+$$
+\left[
+	\left(
+	\tau_{zx} 
+	+ \frac{\partial \tau_{zx}}{\partial z} \frac{\partial z}{2}
+	\right)
+	-
+	\left(
+	\tau_{zx} 
+	- \frac{\partial \tau_{zx}}{\partial z} \frac{\partial z}{2}
+	\right)
+\right] \delta x\delta y
+= \frac{\partial \tau_{zx}}{\partial z} \delta x\delta y\delta z
+$$ 
+and
+$$
+\left[
+	\left(
+	\tau_{yx} 
+	+ \frac{\partial \tau_{yx}}{\partial y} \frac{\partial y}{2}
+	\right)
+	-
+	\left(
+	\tau_{yx} 
+	- \frac{\partial \tau_{yx}}{\partial y} \frac{\partial y}{2}
+	\right)
+\right] \delta x\delta z
+= \frac{\partial \tau_{yx}}{\partial y} \delta x\delta y\delta z
+$$ 
+
+Here, once again, we are fishing for patterns. Let's look at the total forces in the $x$ direction due to surface forces:
+$$
+\delta f_{sx} 
+= 
+\left(
+	\frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + \frac{\partial \tau_{zx}}{\partial z} 
+\right) \delta x\delta y\delta z
+$$
+
+Smilarly,
+$$
+\delta f_{sy} 
+= 
+\left(
+	\frac{\partial \tau_{xy}}{\partial x} + \frac{\partial \sigma_{yy}}{\partial y} + \frac{\partial \tau_{zy}}{\partial y} 
+\right) \delta x\delta y\delta z
+$$
+
+and,
+$$
+\delta f_{sz} 
+= 
+\left(
+	\frac{\partial \tau_{xz}}{\partial x} + \frac{\partial \tau_{yz}}{\partial y} + \frac{\partial \sigma_{zz}}{\partial z} 
+\right) \delta x\delta y\delta z
+$$
+
+\textbf{Equations of Motion:}
+Given that $\delta f = \delta m \cdot \mathbf{a}$ and $\delta m = \rho \delta x\delta y\delta z$. 
+We can obtain equations of motion by noting that the sum of body and surface forces should equal the sum unsteady and convective acceleration terms.
+ 
+$$
+\rho g_x 
++ 
+\left(
+	\frac{\partial \sigma_{xx}}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + \frac{\partial \tau_{zx}}{\partial z} 
+\right)
+= \rho 
+\left( 
+	\frac{\partial u}{\partial t} 
++ u \frac{\partial u}{\partial x}
++ v \frac{\partial v}{\partial y}
++ w \frac{\partial w}{\partial z}
+\right)
+$$
+
 
 
 \end{document}
