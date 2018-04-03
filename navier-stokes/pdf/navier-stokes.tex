@@ -278,5 +278,32 @@ $$
 \right)
 $$
 
+Thus far, we end up with 3 equations plus the continuity one from the previous section.
+However, we have no idea what the velocities or the stresses are (12 unkowns). 
+\\~\\
+
+\subsubsection{Inviscid flow:} 
+shearing stresses are zero (no viscocity) and all normal stresses will equal each other and the negative of the pressure, which gives us Euler's equation. 
+
+$$
+\rho g_x - \frac{\partial P}{\partial x} 
+= \rho
+\left(
+	\frac{\partial u}{\partial t} 
++ u \frac{\partial u}{\partial x}
++ v \frac{\partial u}{\partial y}
++ w \frac{\partial u}{\partial z}
+\right)
+$$
+
+and so on and so forth.
+More illuminating: 
+$$
+\rho \mathbf{g} - \nabla P 
+= \rho + \left( 
+	\frac{\partial \mathbf{v}}{\mathbf{\partial t}}
+	+ \left(\mathbf{v} \cdot \nabla \right) \mathbf{v}
+\right) 
+$$
 
 \end{document}
