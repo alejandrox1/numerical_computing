@@ -1,2 +1,13 @@
 # MD
 MD/examples
+
+
+# Jupyter notebooks
+*.ipynb_checkpoints
+
+# Tex
+*.aux
+*.dvi
+*.log
+*.gz
+
