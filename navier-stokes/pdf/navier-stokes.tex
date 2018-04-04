@@ -310,7 +310,117 @@ $$
 
 \section{Navier-Stokes Equations}
 The magic behind this lies in finding constitutive relations; somehow find some relations between stress and velocity (stress deformation equations).
-So from here on, we will assume we are working with newtownian fluid - the stresses are linearly proportional to the strain rates (derivatives of velocity).
+So from here on, we will assume:
 
+\begin{itemize}
+\item Newtonian fluid - Stresses are linearly related to the strain/deformation rates (derivatives of velocity).
+\item Incompressible flow - constant density.
+\item Isothermal flow - no need to consider an energy equation.
+\item Constant velocity.
+\end{itemize}
+
+Viscuous stresses are linear with respect to the strains.
+
+\subsection{Normal Stresses}
+For the case of the normal stresses,
+$$
+\sigma_{xx} = -p + 2\mu \frac{\partial u}{\partial x}
+$$
+$$
+\sigma_{yy} = -p + 2\mu \frac{\partial v}{\partial y}
+$$
+$$
+\sigma_{zz} = -p + 2\mu \frac{\partial w}{\partial z}
+$$
+
+Where $p$ is thermodynamic pressure and $\mu$ is the coefficient of viscocity of a newtonian fluid.
+
+Puting it all together:
+$$
+\left( \sigma_{xx} + \sigma_{yy} + \sigma_{zz} \right)
+=  3\left( -p + 2\mu \nabla \cdot \mathbf{v} \right)
+= -3p 
+$$
+
+The last step is due to the fact that for incompressible fluids, the divergence of the velocity is zero ($\nabla \cdot \mathbf{v}$).
+
+\subsection{Shearing Stresses}
+Abusing symmetry, we are able to write expressions such as 
+$$
+\tau_{xy} 
+= \tau_{zx}
+= \mu \left( \frac{\partial u}{\partial y} + \frac{\partial v}{\partial x} \right) 
+$$
+$$
+\tau_{yz}
+= \tau_{zy}
+= \mu \left( \frac{\partial v}{\partial z} + \frac{\partial w}{\partial y} \right)
+$$
+$$
+\tau_{zx} 
+= \tau_{xz}
+= \mu \left( \frac{\partial w}{\partial x} + \frac{\partial u}{\partial z} \right)
+$$
+
+Now that we have all stresses in terms on derivatives of velocity, we can put them all back into the momentum conservation equation and we will get more fun stuff, we will get some terms which will be first order derivatives of the pressuer and we will also get second order drivatives of the velocity.
+
+For example, if we look at the stress terms - ignoring the body force and acceleration terms,
+\begin{equation*}
+\begin{split}
+& \frac{\partial \sigma_{xx}}{\partial x} 
++ \frac{\partial \tau_{yx}}{\partial y} 
++ \frac{\partial \tau_{zx}}{\partial z}
+\\ &=
+- \frac{\partial p}{\partial x} + 2\mu \frac{\partial^2 u}{\partial x^2}
++ \mu\left( 
+	\frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 v}{\partial y \partial x}
+	\right)
++ \mu\left( 
+	\frac{\partial^2 w}{\partial z \partial x} + \frac{\partial^2 u}{\partial z^2}
+	\right)
+\\ &=
+-\frac{\partial p}{\partial x}
++ \mu\left( 
+	\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}
+	\right)
++ \mu\left( 
+	\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 v}{\partial y \partial x} + \frac{\partial^2 w}{\partial z \partial x} 
+	\right)
+\\ &=
+-\frac{\partial p}{\partial x}
++ \mu\left( 
+	\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}
+	\right)
++ \mu \frac{\partial}{\partial x} \nabla \cdot \mathbf{v}
+\end{split}
+\end{equation*}
+
+
+So the $x$ direction term for the momentum equation becomes,
+\begin{equation}
+\rho\left( 
+	\frac{\partial u}{\partial t} + u\frac{\partial u}{\partial x} + v\frac{\partial u}{\partial y} + w\frac{\partial u}{\partial z}
+\right)
+= 
+  \rho g_x 
+- \frac{\partial p}{\partial x}
++ \mu\left(
+	\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}
+	\right)	
+\end{equation}
+
+
+Now, don't even think about writing the entire thing by hand, we gots better things to do!
+So low and behold,
+\begin{equation}
+\rho\left( 
+	\frac{\partial \mathbf{v}}{\partial t} 
+	+ \left(\mathbf{v}\cdot\nabla\right)\mathbf{v}
+\right)
+=
+\rho\mathbf{g}
+- \nabla p
++ \mu \nabla^2 \mathbf{v} 
+\end{equation}
 
 \end{document}
