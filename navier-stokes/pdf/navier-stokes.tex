@@ -12,6 +12,8 @@
 \date{\today}  
 \maketitle
 
+\tableofcontents
+
 
 \section{Differential Form}
 
@@ -426,5 +428,28 @@ So low and behold,
 Now, we have 3 momentum equations, 1 continuity equation and 5 unkowns - the velocity, the pressure, and the density.
 
 If we can get an equation of state relating the pressure and density we would have a complete system, a nonlinear, second-order PDE, but a system nontheless.
+
+
+\subsection{Conclusions}
+\begin{equation}
+\frac{\partial \mathbf{v}}{\partial t} 
++ \left(\mathbf{v}\cdot\nabla\right) \mathbf{v}
+=
+- \frac{1}{\rho}\nabla p
++ \nu\nabla^2 \mathbf{v}
+\end{equation}
+
+On the left we have two acceleration terms, the unsteady term (from forces) and the convective acceleration (from moving around the velocity field).
+The effect of moving within the velocity vector field is related to the gradient of the pressure. The last term represents the viscuous diffusion in the fluid.
+
+Looking for a solution to these types of systems we are hoping to find the velocity and the pressure fields.
+
+
+
+\section{Finite Difference Method}
+\begin{itemize}
+\item Discretize the numerical domain by defining a grid.
+\item Approximate derivatives by Taylor expansions.
+\end{itemize}
 
 \end{document}
