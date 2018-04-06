@@ -5,6 +5,8 @@ compphys/notes
 # MD
 MD/examples
 
+# Signal_processing
+signal_processing/ThinkDSP
 
 # Jupyter notebooks
 *.ipynb_checkpoints
