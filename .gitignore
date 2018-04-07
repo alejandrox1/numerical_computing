@@ -7,6 +7,7 @@ MD/examples
 
 # Signal_processing
 signal_processing/ThinkDSP
+signal_processing/*.wav
 
 # Jupyter notebooks
 *.ipynb_checkpoints
