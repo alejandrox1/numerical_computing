@@ -1,5 +1,8 @@
 #!/user/bin/env python
 import numpy as np
+import pandas as pd
+from sklearn.utils import shuffle
+
 
 def get_kaggle_mnist():
     """ Return MNIST dataset in Numpy Arrays.
@@ -15,4 +18,24 @@ def get_kaggle_mnist():
     Ytrain: array-like
     Xtest:  array-like
     Ytest:  array-like
-    ""
+    """
+    train = pd.read_csv("train.csv").as_matrix().astype(np.float32)
+    train = shuffle(train)
+
+    Xtrain = train[:-1000, 1:] / 255
+    Ytrain = train[:-1000, 0].astype(np.int32)
+
+    Xtest = train[-1000:, 1:] / 255
+    Ytest = train[-1000:, 0].astype(np.int32)
+
+    return Xtrain, Ytrain, Xtest, Ytest
+
+def xavier_initialization(shape):
+    w = np.random.randn(*shape) / np.sqrt(sum(shape))
+    return w.astype(np.float32)
+
+def relu(x):
+    return x * (x > 0)
+
+def error_rate(p, t):
+    return np.mean(p != t)
