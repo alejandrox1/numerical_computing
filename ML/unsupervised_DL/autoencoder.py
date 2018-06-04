@@ -17,7 +17,7 @@ def T_shared_zeros_like32(p):
     return theano.shared(np.zeros_like(p.get_value(), dtype=np.floatfloat32))
 
 def momentum_updates(cost, params, mu, learning_rate):
-    dparams = [T_sahred_zeros_like32(p) for p in params]
+    dparams = [T_shared_zeros_like32(p) for p in params]
 
     updates = []
     grads = T.grad(cost, params)
