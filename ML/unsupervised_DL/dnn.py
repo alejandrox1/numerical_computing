@@ -3,6 +3,7 @@ import theano
 import theano.tensor as T
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.utils import shuffle
 from autoencoder import AutoEncoder, momentum_updates
 from utils import xavier_initialization
 
@@ -79,7 +80,7 @@ class DNN:
                 updates = updates,
         )
 
-        n_batches = N // batch_sizw
+        n_batches = N // batch_size
         costs = []
         print("supervised training...")
         for i in range(epochs):
