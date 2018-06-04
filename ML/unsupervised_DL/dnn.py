@@ -93,8 +93,9 @@ class DNN:
                 train_op(Xbatch, Ybatch)
                 cost, prediction = cost_predict_op(Xtest, Ytest)
                 error = error_rate(prediction, Ytest)
-                print("j / n_batches: {}/{}, cost: {}, error: {}".format(j, n_batches, cost, error))
                 costs.append(cost)
+                if i%10==0 and j%100==0 and len(costs)>0:
+                    print("j / n_batches: {}/{}, cost: {}, error: {}".format(j, n_batches, cost, error))
         
         plt.plot(costs)
         plt.show()
