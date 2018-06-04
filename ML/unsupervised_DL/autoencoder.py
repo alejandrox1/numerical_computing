@@ -106,7 +106,7 @@ class AutoEncoder:
                 train_op(batch)
 
                 costs.append( cost_op(batch) )
-                if i % 10 == 0 and len(costs) > 0:
+                if i % 100 == 0 and len(costs) > 0:
                     print("epoch: {} \t cost: {}".format(i, costs[-1]))
         print("epoch: {} \t cost: {}".format(epochs, costs[-1]))
 
