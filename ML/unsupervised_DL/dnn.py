@@ -9,7 +9,7 @@ class DNN:
         self.hidden_layers = []
         count = 0
         for M in hidden_layer_sizes:
-            ae = UnsupervisedModel(M, count)
+            ae = unsupervised_model(M, count)
             self.hidden_layers.append(ae)
             count += 1
         return
@@ -27,13 +27,7 @@ class DNN:
     def predict(self, X):
         return T.argmax(self.forward(X), axis=1)
 
-    def fit(self, X, Y, Xtest, Ytest):
-        pretrain       = True
-        train_head_ony = True
-        learning_rate  = 0.1
-        mu             = 0.99
-        reg            = 0.0
-        epochs         = 1
+    def fit(self, X, Y, Xtest, Ytest, learning_rate=0.1, mu=0.99, reg=0.0, pretrain=True, train_head_only=True, epochs=1):
         batch_size     = 100
 
         learning_rate = np.float32(learning_rate)
