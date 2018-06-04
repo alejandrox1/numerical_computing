@@ -53,7 +53,7 @@ class AutoEncoder:
         W0 = xavier_initialization((D, self.M))
         self.W  = theano.shared(W0, "W_{}".format(self.id))
         self.bh = theano.shared(np.zeros(self.M, dtype=np.float32), "bh_{}".format(self.id))
-        self.bo = theano.shared(np.zeros(self.D, dtype=np.float32), "bo_{}".format(self.id))
+        self.bo = theano.shared(np.zeros(D, dtype=np.float32), "bo_{}".format(self.id))
         # For gradient descent.
         self.params = [self.W, self.bh, self.bo]
         # For the DNN class.
