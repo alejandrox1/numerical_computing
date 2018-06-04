@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+import theano
+import theano.tensor as T
 import numpy as np
 import matplotlib.pyplot as plt
 from autoencoder import AutoEncoder, momentum_updates
@@ -74,7 +76,7 @@ class DNN:
         updates  = momentum_updates(cost, self.params, mu, learning_rate)
         train_op = theano.function(
                 inputs  = [X_in, targets],
-                updates = udates,
+                updates = updates,
         )
 
         n_batches = N // batch_sizw
