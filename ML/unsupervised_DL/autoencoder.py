@@ -14,7 +14,7 @@ def T_shared_zeros_like32(p):
 
     p : theano shared variable.
     """
-    return theano.shared(np.zeros_like(p.get_value(), dtype=np.floatfloat32))
+    return theano.shared(np.zeros_like(p.get_value(), dtype=np.float32))
 
 def momentum_updates(cost, params, mu, learning_rate):
     dparams = [T_shared_zeros_like32(p) for p in params]
