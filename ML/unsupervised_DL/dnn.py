@@ -48,7 +48,7 @@ class DNN:
 
         # Initialize logistic regression layer.
         N = len(Y)
-        L = len(set(Y))
+        K = len(set(Y))
         W0 = xavier_initialization((self.hidden_layers[-1].M, K))
         self.W = theano.shared(W0, "w_logreg")
         self.b = theano.shared(np.zeros(K, dtype=np.float32), "b_logreg")
