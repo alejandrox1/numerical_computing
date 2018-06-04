@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import numpy as np
-from autoencoder get AutoEncoder
+from autoencoder import AutoEncoder
 from dnn import DNN
 from utils import get_kaggle_mnist
 
