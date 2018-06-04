@@ -9,4 +9,4 @@ set -o pipefail
 
 #python -c 'import theano; print(theano.config)' | less
 
-THEANO_FLAGS='warn_float64=raise' python test_autoencoder.py
+THEANO_FLAGS='floatX=float32,warn_float64=raise' python test_autoencoder.py
