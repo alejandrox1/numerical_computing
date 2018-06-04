@@ -19,7 +19,7 @@ def get_kaggle_mnist():
     Xtest:  array-like
     Ytest:  array-like
     """
-    train = pd.read_csv("train.csv").as_matrix().astype(np.float32)
+    train = pd.read_csv("train.csv").values.astype(np.float32)
     train = shuffle(train)
 
     Xtrain = train[:-1000, 1:] / 255
