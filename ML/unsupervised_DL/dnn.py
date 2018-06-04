@@ -92,7 +92,7 @@ class DNN:
                 
                 train_op(Xbatch, Ybatch)
                 cost, prediction = cost_predict_op(Xtest, Ytest)
-                error = error_rate(the_prediction, Ytest)
+                error = error_rate(prediction, Ytest)
                 print("j / n_batches: {}/{}, cost: {}, error: {}".format(j, n_batches, cost, error))
                 costs.append(the_cost)
         
