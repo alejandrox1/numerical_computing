@@ -87,8 +87,8 @@ class DNN:
             print("epoch:", i)
             X, Y = shuffle(X, Y)
             for j in range(n_batches):
-                Xbatch = X[j*batch_sz : (j+1)*batch_size]
-                Ybatch = Y[j*batch_sz : (j+1)*batch_size]
+                Xbatch = X[j*batch_size : (j+1)*batch_size]
+                Ybatch = Y[j*batch_size : (j+1)*batch_size]
                 
                 train_op(Xbatch, Ybatch)
                 cost, prediction = cost_predict_op(Xtest, Ytest)
