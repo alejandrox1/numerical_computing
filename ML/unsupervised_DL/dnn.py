@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.utils import shuffle
 from autoencoder import AutoEncoder, momentum_updates
-from utils import xavier_initialization
+from utils import xavier_initialization, error_rate
 
 class DNN:
     def __init__(self, hidden_layer_sizes, unsupervised_model=AutoEncoder):
