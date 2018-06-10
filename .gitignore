@@ -9,8 +9,17 @@ MD/examples
 signal_processing/ThinkDSP
 signal_processing/*.wav
 
+# Virtual envs
+**/devenv/
+
+# JITs
+**/__pycache__
+
 # Jupyter notebooks
 *.ipynb_checkpoints
+
+# Data
+*.csv
 
 # Tex
 *.aux
