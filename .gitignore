@@ -30,3 +30,5 @@ signal_processing/*.wav
 *.log
 *.gz
 *.toc
+*.bbl
+*.blg
