@@ -12,6 +12,9 @@ signal_processing/*.wav
 # Virtual envs
 **/devenv/
 
+# swps
+*.swp
+
 # JITs
 **/__pycache__
 
