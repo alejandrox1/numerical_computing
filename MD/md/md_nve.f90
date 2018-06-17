@@ -54,4 +54,26 @@ PROGRAM md_nve
     WRITE( unit=output_unit, fmt="(a)" ) "Particle mass=1 throughout"
     CALL introduction
 
+    ! Set sensible parameters for testing.
+    nblock = 10
+    nstep  = 20000
+    r_cut  = 2.5
+    dt     = 0.005
+
+    ! Read run parameters from namelist.
+    !To test this part on the command line try: &nml nblock=11, nstep=22, r_cut=3.5, dt=0.1
+    READ( unit=input_unit, nml=nml, iostat=ioerr )
+    IF ( ioerr .NE. 0 ) THEN
+        WRITE( unit=output_unit, fmt="(a,i15)" ) "Error reading namelist from stdin", ioerr
+        IF ( ioerr .EQ. iostat_eor ) WRITE( unit=output_unit, fmt="(a)" ) "End of record"
+        IF ( ioerr .EQ. iostat_end ) WRITE (unit=output_unit, fmt="(a)" ) "end of file"
+        STOP "Error in md_nve"
+    END IF
+
+    ! Write out run parameters.
+    WRITE ( unit=output_unit, fmt="(a,t40,i15)"   ) "Number of blocks",          nblock
+    WRITE ( unit=output_unit, fmt="(a,t40,i15)"   ) "Number of steps per block", nstep
+    WRITE ( unit=output_unit, fmt="(a,t40,f15.6)" ) "Potential cutoff distance", r_cut
+    WRITE ( unit=output_unit, fmt="(a,t40,f15.6)" ) "Time step",                 dt
+
 END PROGRAM md_nve
